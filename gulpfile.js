@@ -1,7 +1,6 @@
 const css = require('gulp-css');
 const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
-const rename = require('gulp-rename');
+
 const minifyCSS = require('gulp-csso');
 const browserSync = require('browser-sync').create();
 const { watch, series, src, dest } = require('gulp');
@@ -9,8 +8,7 @@ const { watch, series, src, dest } = require('gulp');
 function jsHandle(cb) {
     src('./src/index.js')
         .pipe(concat('index.js'))
-        .pipe(uglify())
-        .pipe(rename({ suffix: '.min'}))
+
         .pipe(dest('dest', { overwrite:true }))
         .pipe(browserSync.stream());
 

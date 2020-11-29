@@ -18,15 +18,21 @@ class TodoList {
     if (input.value !== "") {
       const li = document.createElement("li");
       const h3 = document.createElement("h3");
+      const btnDone = document.createElement("button");
       const btn = document.createElement("button");
+      const fasDone = document.createElement("i");
       const farDel = document.createElement("i");
 
       li.setAttribute("class", "todoli");
       h3.setAttribute("class", "castoro");
+      btnDone.setAttribute("class", "done-btn");
+      fasDone.setAttribute("class", "fas fa-check-double");
       btn.setAttribute("class", "delete-btn");
       farDel.setAttribute("class", "far fa-trash-alt");
 
       li.append(h3);
+      btnDone.append(fasDone);
+      li.append(btnDone);
       btn.append(farDel);
       li.append(btn);
 
@@ -36,8 +42,8 @@ class TodoList {
 
       this.wrapper.append(li);
 
+      this.doneBtn(btnDone, li);
       this.deleteBtn(btn, li);
-      this.complitedTask(h3);
     }
   };
 
@@ -47,8 +53,8 @@ class TodoList {
     });
   };
 
-  complitedTask = (task) => {
-    task.addEventListener("click", () => {
+  doneBtn = (btnDone, task) => {
+    btnDone.addEventListener("click", () => {
       task.classList.toggle("complited");
     });
   };
